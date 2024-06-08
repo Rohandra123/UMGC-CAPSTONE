@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!--Google Font Raleway-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet">
@@ -48,11 +50,38 @@
       </div>
     </div>
   </nav>
-  <br>
-  <br>
-  <h1 style="text-align:center;">Lets Do This.</h1>
-  <center><img class="img-fluid" src="images/peopleEating.jpeg" alt="People Eating" /></center>
+<body>
+  <div class="container">
+    <h1 class="text-center">Daily Food Diary</h1>
+    <form id="food-form">
+      <div class="row">
+        <div class="col-md-4">
+          <input type="text" id="food" class="form-control" placeholder="Food Item" required>
+        </div>
+        <div class="col-md-4">
+          <input type="number" id="calories" class="form-control" placeholder="Calories" required>
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary btn-block">Add Food</button>
+        </div>
+      </div>
+    </form>
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Food Item</th>
+          <th scope="col">Calories</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody id="food-list">
+      </tbody>
+    </table>
+    
+    <div class="text-center">
+      <h3>Total Calories: <span id="total-calories">0</span></h3>
+    </div>
+  </div>
 </body>
 </html>
-
-
