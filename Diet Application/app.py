@@ -31,6 +31,8 @@ def BMRCalc():
             else:
                 return render_template("BMRCalc.html", error="Invalid sex. Please enter 'M' or 'F'.", bmr=None)
 
+            bmr = round(bmr, 3)
+
             return render_template("BMRCalc.html", bmr=bmr)
         except ValueError:
             return render_template("BMRCalc.html", error="Please enter valid numeric values for weight, height, and age.", bmr=None)
@@ -55,6 +57,8 @@ def BMICalc():
             # Calculate BMI
             bmi = weight_kg / (height_meters ** 2)
 
+            bmi = round(bmi, 3)
+            
             return render_template("BMICalc.html", bmi=bmi)
         except ValueError:
             return render_template("BMICalc.html", error="Please enter valid numeric values for weight and height.", bmi=None)
