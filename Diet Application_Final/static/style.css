@@ -1,0 +1,14 @@
+:root{
+    --bs-body-font-family: 'Raleway', sans-serif;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  p.large {
+    font-size: 300%;
+  }
+ 
