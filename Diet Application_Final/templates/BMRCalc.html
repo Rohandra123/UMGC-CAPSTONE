@@ -4,94 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet">
-    <title>BMR Calculator</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-    <style>
-        body, .navbar-nav, .navbar-brand, .dropdown-menu, .btn-group .btn {
-            font-family: 'Raleway', sans-serif;
-            font-size: 16px; /* Adjust the font size as needed */
-        }
-        .container {
-            margin-top: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #e9ecef;
-            border-radius: 5px;
-        }
-    </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap" rel="stylesheet">
+
+  <title>BMR Calculator</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+  <style>
+    body, .navbar-nav, .navbar-brand, .dropdown-menu, .btn-group .btn {
+      font-family: 'Raleway', sans-serif;
+      font-size: 16px; /* Adjust the font size as needed */
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-light bg-info">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Home Page</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
-                    aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+  <nav class="navbar navbar-expand-sm navbar-light bg-info">
+    <!--"Home Page" Top left-->
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Home Page</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
+              aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <form class="navbar-form">
-                        <div class="btn-group">
-                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Calculators <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                                <li><a href="/third">BMR Calculator</a></li>
-                                <li><a href="/second">BMI Calculator</a></li>
-                            </ul>
-                        </div>
-                    </form> 
-                </li>
-            </ul>
-            <div class="collapse navbar-collapse" id="navbarID">
-                <a class="navbar-brand" href="/fourth">Food Diary</a>
+      <!--Calculator drop down menu options-->
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <form class="navbar-form">
+            <div class="btn-group">
+              <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">Calculators <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="/third">BMI Calculator</a></li>
+                <li><a href="/second">BMR Calculator</a></li>
+              </ul>
             </div>
-        </div>
-    </nav>
-
-    <div class="container">
-        <h1>BMR Calculator</h1>
-        <form method="post" action="/second">
-            {% if error %}
-                <div class="alert alert-danger">{{ error }}</div>
-            {% endif %}
-            <div class="form-group">
-                <label for="height">Height (inches)</label>
-                <input type="number" id="height" name="height" class="form-control" placeholder="Enter your height in inches" value="{{ height }}" required>
-            </div>
-            <div class="form-group">
-                <label for="weight">Weight (pounds)</label>
-                <input type="number" id="weight" name="weight" class="form-control" placeholder="Enter your weight in pounds" value="{{ weight }}" required>
-            </div>
-            <div class="form-group">
-                <label for="age">Age (years)</label>
-                <input type="number" id="age" name="age" class="form-control" placeholder="Enter your age in years" value="{{ age }}" required>
-            </div>
-            <div class="form-group">
-                <label for="sex">Sex</label>
-                <select id="sex" name="sex" class="form-control" required>
-                    <option value="" disabled>Select your sex</option>
-                    <option value="M" {% if sex == 'M' %} selected {% endif %}>Male</option>
-                    <option value="F" {% if sex == 'F' %} selected {% endif %}>Female</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Calculate BMR</button>
-        </form>
-        <div class="result" id="result">
-            {% if bmr is not none %}
-                <p class="text-success">Your BMR is {{ bmr }}</p>
-            {% endif %}
-        </div>
+          </form> 
+        </li>
+      </ul>
+      <div class="collapse navbar-collapse" id="navbarID">
+        <!--Food Diary Navigation Bar Button-->
+        <a class="navbar-brand" href="/fourth">Food Diary</a>
+      </div>
     </div>
-</body>
-</html>
+  </nav>
+</head>
+<body>
+  <div class="container">
+    <h1>BMR Calculator</h1>
+    <form method="POST" action="/second">
+        <h5 class="text-danger">Disclaimer! Calculations are most accurate when based on your assigned sex at birth opposed to gender identity.</h5>
+        <div class="form-group">
+            <label for="height">Height (inches)</label>
+            <input type="number" id="height" name="height" placeholder="Enter your height in inches" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="weight">Weight (pounds)</label>
+            <input type="number" id="weight" name="weight" placeholder="Enter your weight in pounds" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="age">Age (years)</label>
+            <input type="number" id="age" name="age" placeholder="Enter your age in years" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="sex">Sex</label>
+            <select id="sex" name="sex" class="form-control">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Calculate BMR</button>
+    </form>
+    <div class="result" id="result">
+        {% if bmr %}
+            <p class="text-success">Your BMR is {{ bmr }}</p>
+        {% endif %}
+        {% if error %}
+            <p class="text-danger">{{ error }}</p>
+        {% endif %}
+    </div>
+        <br>
+        <br>
+        <br>
+        <h4 style="text-align:center;">Below is the calculation used to calulate BMR based on sex.</h4>
+        <br>
+        <br>
+        <center><img class="img-fluid" src="static/images/bmr-formula.jpg" alt="bmr-formula" /></center>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
 
+</body>
 </html>
